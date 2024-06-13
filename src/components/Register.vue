@@ -11,31 +11,30 @@ import { ref } from 'vue';
 </script>
 
 <template>
-    <div class="container">
-        <form class="my-3" @submit.prevent="register">
-            <h2 class="mb-4">Register</h2>
-            <div class="input-group flex-nowrap mb-3">
-                <div class="input-group-text">
-                    <i class="bi bi-person"></i>
+    <div class="container my-3">
+        <div class="row">
+        
+            <form class="my-3 col-lg-5" @submit.prevent="register">
+                <h1>Register</h1>
+                <small class="text-secondary">Create your new account</small>
+                <hr class="border-secondary rounded">
+                <div class="form-floating mb-3">
+                    <input v-model="name" id="name" class="form-control" placeholder="Your full name" type="text" required>  
+                    <label for="name">Full name</label>
                 </div>
-                <input v-model="name" class="form-control form" placeholder="Your name" type="text" required>  
-            </div>
-            <div class="input-group flex-nowrap my-3">
-                <div class="input-group-text">
-                    <i class="bi bi-envelope"></i>
+                <div class="form-floating mb-3">
+                    <input v-model="email" id="email" class="form-control" placeholder="Your email" type="email" required>  
+                    <label for="email">Email address</label>
                 </div>
-                <input v-model="email" class="form-control" placeholder="Your email" type="email" required>  
-            </div>
-            <div class="input-group flex-nowrap mb-3">
-                <div class="input-group-text">
-                    <i class="bi bi-key"></i>
+                <div class="form-floating mb-3">
+                    <input v-model="password" id="password" class="form-control" placeholder="Your strong password" type="password" required>  
+                    <label for="password">Password</label>
                 </div>
-                <input v-model="password" class="form-control" placeholder="Your strong password" type="password" required>  
-            </div>
-            <button type="submit" class="btn btn-primary">
-                Register
-                <i class="bi bi-plus"></i>
-            </button>
-        </form>
+                <button type="submit" class="btn btn-primary w-100">
+                    Register
+                    <i class="bi bi-person-add"></i>
+                </button>
+            </form>
+        </div>
     </div>
 </template>
