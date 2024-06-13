@@ -20,9 +20,12 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 
-	const auth = useAuthStore();
+	const privateRoutes: string[] = ['/profile'];
+	const authenticationRoutes: string[] = ['/login', '/register'];
 
-	if (to.path === '/profile' && !auth.authenticated) next({path: '/login'});
+	const auth = useAuthStore();
+	if (privateRoutes.includes(to.path) && !auth.authenticated) next({ path: '/login' });
+	else if (authenticationRoutes.includes(to.path) && auth.authenticated) next({ path: '/home' });
 	else next();
 });
 
