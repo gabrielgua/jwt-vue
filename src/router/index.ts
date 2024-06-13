@@ -22,7 +22,7 @@ router.beforeEach((to, from, next) => {
 
 	const auth = useAuthStore();
 
-	if (to.path === '/profile' && !auth.isAuthenticated()) next({path: '/login'});
+	if (to.path === '/profile' && !auth.authenticated) next({path: '/login'});
 	else next();
 });
 

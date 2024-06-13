@@ -1,5 +1,10 @@
 <script setup lang="ts">
     import { RouterLink } from 'vue-router';
+    import HeaderProfile from './HeaderProfile.vue'
+    import HeaderLinks from './HeaderLinks.vue';
+    import { useAuthStore } from '@/stores/auth';
+
+    const auth = useAuthStore();
 </script>
 
 <template>
@@ -8,14 +13,9 @@
             <div class="container-sm">
                 <RouterLink to="/" class="navbar-brand text-info fw-bold fst-italic">authentication</RouterLink>
 
-                <div class="d-flex gap-3">
-                    <RouterLink active-class="link-secondary" class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/home">
-                        <i class="bi bi-house"></i>
-                        Home
-                    </RouterLink>
-                    <RouterLink active-class="link-secondary" class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/login">Login</RouterLink>
-                    <RouterLink active-class="link-secondary" class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/register">Register</RouterLink>
-                    <RouterLink active-class="link-secondary" class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/profile">Profile</RouterLink>
+                <div class="d-flex align-items-center gap-3">
+                    <HeaderProfile v-if="auth.authenticated" :logout="auth.logout" :email="auth.email"/>
+                    <HeaderLinks v-else/>
                 </div>
             </div>
         </nav>

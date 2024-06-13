@@ -2,7 +2,7 @@ import { http } from "@/services/axios";
 import type { AuthResponse } from "@/types/auth-response";
 import type { AxiosError } from "axios";
 import { defineStore } from "pinia";
-import { reactive, ref } from "vue";
+import { computed, reactive, ref } from "vue";
 import { useRouter } from "vue-router";
 
 
@@ -11,11 +11,9 @@ import { useRouter } from "vue-router";
 export const useAuthStore = defineStore('auth', () => {
     const router = useRouter();
 
-    const data: AuthResponse = reactive({
-        email: '',
-        access_token: '',
-    } as AuthResponse);
-
+    const email = ref('');
+    const token = ref('');
+    const authenticated = computed(() => checkAuth());
     const state = reactive({error: false, loading: false});
 
     function login(email: string, password: string) {
@@ -26,7 +24,7 @@ export const useAuthStore = defineStore('auth', () => {
             .then(response => {
                 saveResponse(response.data.access_token, response.data.email);
                 console.log('Successful login');
-                router.push('/home');
+                router.push('/profile');
             })
             .catch((e: AxiosError) => {
                 state.error = true;
@@ -35,15 +33,23 @@ export const useAuthStore = defineStore('auth', () => {
             .finally(() => state.loading = false);
     }
 
+    function checkAuth(): boolean {
+        load();
+
+        return token.value != null && token.value != '';
+    }
+
     function load() {
-        if (!isAuthenticated()) {            
+        if (!localStorage.getItem('token')) {
             return;
         }
 
-    
-        data.access_token = localStorage.getItem('token')!;
-        data.email = localStorage.getItem('email')!;   
-            
+        setAuthentication(localStorage.getItem('token')!, localStorage.getItem('email')!);            
+    }
+
+    function setAuthentication(t: string, e: string) {
+        token.value = t;
+        email.value = e;   
     }
 
     function clearState() {
@@ -51,30 +57,18 @@ export const useAuthStore = defineStore('auth', () => {
         state.error = false;
     }
 
-    function saveResponse(token: string, email: string) {
-        data.access_token = token;
-        data.email = email;
-        localStorage.setItem('token', data.access_token);
-        localStorage.setItem('email', data.email);
+    function saveResponse(t: string, e: string) {
+        setAuthentication(t, e);
+        localStorage.setItem('token', token.value);
+        localStorage.setItem('email', email.value);
     }
 
     function logout() {
+        setAuthentication('', '');
         localStorage.removeItem('token');
         localStorage.removeItem('email');
         router.push('/login');
     }
 
-    function isAuthenticated(): boolean {
-        if (!localStorage.getItem('token')) {
-            return false;
-        }
-
-        if (!localStorage.getItem('token')?.match('(^[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*\.[A-Za-z0-9-_]*$)')) {
-            return false;
-        } 
-
-        return true;
-    }
-
-    return { state, login, logout, data, clearState, isAuthenticated, load }
+    return { token, email, state, authenticated, load, login, logout, clearState }
 });
