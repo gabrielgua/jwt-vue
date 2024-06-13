@@ -11,10 +11,10 @@ import { ref } from 'vue';
 </script>
 
 <template>
-    <div class="container my-3">
+    <div class="container my-5">
         <div class="row">
         
-            <form class="my-3 col-lg-5" @submit.prevent="register">
+            <form class="col-lg-5" @submit.prevent="register">
                 <h1>Register</h1>
                 <small class="text-secondary">Create your new account</small>
                 <hr class="border-secondary rounded">

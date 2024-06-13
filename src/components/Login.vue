@@ -22,9 +22,9 @@ import { onMounted, ref } from 'vue';
 </script>
 
 <template>
-    <div class="container my-3">
+    <div class="container my-5">
         <div class="row">
-            <form @submit.prevent="login" class="my-3 col-lg-5">
+            <form @submit.prevent="login" class="col-lg-5">
                 <h1>Login</h1>
                 <small class="text-secondary">Login with your credentials</small>
                 <hr class="border-secondary rounded">
