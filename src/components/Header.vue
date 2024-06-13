@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { RouterLink, RouterView } from 'vue-router';
+    import { RouterLink } from 'vue-router';
 </script>
 
 <template>
@@ -15,6 +15,7 @@
                     </RouterLink>
                     <RouterLink active-class="link-secondary" class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/login">Login</RouterLink>
                     <RouterLink active-class="link-secondary" class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/register">Register</RouterLink>
+                    <RouterLink active-class="link-secondary" class="link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/profile">Profile</RouterLink>
                 </div>
             </div>
         </nav>
