@@ -12,29 +12,25 @@
             <p>The application features several core components, including user login, registration, and a protected profile route. The login and registration components allow users to create accounts and access the application securely, while the protected profile component ensures that user data remains secure and accessible only to authenticated users. This project serves as a comprehensive exercise in integrating various modern web development technologies to create a functional and user-friendly SPA.</p>
         </small>
         <hr class="border-secondary rounded">
-        <div class="small d-flex">
+        <div class="small">
             <span class="d-flex gap-2 align-items-center">
                 Made by 
                 <a target="_blank" href="https://github.com/gabrielgua" class="d-flex align-items-center gap-2 px-2 bg-info-subtle rounded text-decoration-none">
                     <i class="bi bi-github"></i>
-                    <span class="mb-1">gabrielgua</span>
+                    <span class="mb-1 d-none d-md-block">gabrielgua</span>
                 </a>
                 <a target="_blank" href="https://www.linkedin.com/in/gabriel-dev-backend" class="d-flex align-items-center gap-2 px-2 bg-info-subtle rounded text-decoration-none">
                     <i class="bi bi-linkedin"></i>
-                    <span class="mb-1">gabriel-dev-backend</span>
+                    <span class="mb-1 d-none d-md-block">gabriel-dev-backend</span>
                 </a>
                 <hr class="vr">
-                <a target="_blank" href="https://github.com/gabrielgua/jwt-vue" class="d-flex align-items-center gap-2 px-2 bg-info-subtle rounded text-decoration-none">
+                <a target="_blank" href="https://github.com/gabrielgua/jwt-vue" class="d-flex align-items-center gap-2 px-2 bg-info-subtle rounded text-decoration-none flex-wrap">
                     <i class="bi bi-code"></i>
-                    <span class="mb-1">jwt-vue</span>
+                    <span class="mb-1 d-none d-md-block">jwt-vue</span>
                 </a>
                 Project repository 
             </span>
         </div>
-
-
-
-
     </div>
 </template>
 

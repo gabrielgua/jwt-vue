@@ -28,21 +28,21 @@ import { onMounted, ref } from 'vue';
                 <h1>Login</h1>
                 <small class="text-secondary">Login with your credentials</small>
                 <hr class="border-secondary rounded">
-
-                <div v-if="store.state.error" class="alert alert-danger">
+                <div v-if="store.state.error" class="py-3 text-danger-emphasis">
                     <i class="bi bi-exclamation-circle-fill me-2"></i>
-                    Email and/or password are incorrect.
+                    Email and/or password are invalid.
                 </div>
                 <div class="form-floating mb-3">
                     <input v-model="email" id="email" class="form-control" placeholder="Your email" type="email" required>  
                     <label for="email">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
-                    
                     <input id="pass" v-model="password" class="form-control" placeholder="Your strong password" type="password" required>  
                     <label for="pass">Password</label>
 
                 </div>
+                
+                
                 <button type="submit" class="btn btn-primary w-100" :disabled="store.state.loading">
                     Login
                     <i v-if="!store.state.loading" class="bi bi-box-arrow-in-right"></i>

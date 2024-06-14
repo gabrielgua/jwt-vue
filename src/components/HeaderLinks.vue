@@ -1,19 +1,12 @@
 <script setup lang="ts">
-    import { RouterLink } from 'vue-router';
+    import HeaderLink from './HeaderLink.vue';
 </script>
 
 <template>
-    <RouterLink active-class="bg-body-secondary rounded-3 px-2 py-1" class="text-decoration-none link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/home">
-        <i class="bi bi-house"></i>
-        Home
-    </RouterLink>
-    <RouterLink active-class="bg-body-secondary rounded-3 px-2 py-1" class="text-decoration-none link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/login">
-        <i class="bi bi-box-arrow-right"></i>
-        Login
-    </RouterLink>
-    <RouterLink active-class="bg-body-secondary rounded-3 px-2 py-1" class="text-decoration-none link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" to="/register">
-        <i class="bi bi-person-add"></i>
-        Register
-    </RouterLink>
+    <div class="d-lg-flex d-none align-items-center gap-2">
+        <HeaderLink to="/home" icon="bi-house" title="Home"></HeaderLink>
+        <HeaderLink to="/login" icon="bi-box-arrow-right" title="Login"></HeaderLink>
+        <HeaderLink to="/register" icon="bi-person-add" title="Register"></HeaderLink>
+    </div>
 </template>
 
