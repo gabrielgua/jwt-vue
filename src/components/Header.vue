@@ -19,7 +19,7 @@ const auth = useAuthStore();
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="d-lg-flex  d-none align-items-center gap-1">
+                <div class="d-lg-flex d-none align-items-center gap-3">
                     <HeaderProfile v-if="auth.authenticated" :logout="auth.logout" :email="auth.email" />
                     <HeaderLinks v-else />
                 </div>
@@ -30,13 +30,15 @@ const auth = useAuthStore();
     </header>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="mobile-menu">
-        <div class="offcanvas-header">
-            <Logo />
+        <div class="offcanvas-header p-4">
+            <div class="offcanvas-title">
+                <Logo />
+            </div>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
+        <hr class="m-0 border-secondary"></hr>
         <div class="offcanvas-body">
-            <hr class="border-secondary rounded">
-            <div class="d-flex gap-2 flex-sm-column-reverse">
+            <div class="d-flex flex-column-reverse">
                 <HeaderProfile v-if="auth.authenticated" :logout="auth.logout" :email="auth.email" />
                 <HeaderLinks v-else />
             </div>

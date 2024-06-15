@@ -10,8 +10,8 @@
 </script>
 
 <template>
-    <RouterLink :to="$props.to" active-class="bg-body-secondary rounded-3" class="text-decoration-none" >
-        <button class="border border-0 bg-transparent w-100 text-start nav-link px-2 py-1 ">
+    <RouterLink :to="$props.to" active-class="link-opacity-100 bg-body-secondary rounded-3" class="link-opacity-50 text-decoration-none" >
+        <button :data-bs-dismiss="[dismiss]" class="border border-0 bg-transparent w-100 text-start nav-link px-2 py-1 ">
             <i class="bi" :class="[icon]"></i>
             {{ title }}
         </button>
