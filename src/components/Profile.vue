@@ -9,11 +9,12 @@ import { onMounted } from 'vue';
 
 <template>
 
-    <div class="container my-3">
+    <div class="container my-5">
         <h1>Profile</h1>
         <small class="text-secondary">This is your profile area</small>    
+        <hr class="border-secondary rounded">
 
-        <div class="border my-3 d-flex align-items-center gap-4 p-3 rounded">
+        <div class="border d-flex align-items-center gap-4 p-3 rounded">
             <strong><span class="text-secondary">#</span>{{ store.user.id }}</strong>
             <hr class="vr">
             <span>
